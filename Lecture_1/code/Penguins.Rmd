@@ -1,0 +1,263 @@
+---
+title: "Lecture 1"
+subtitle: "Penguins visualisation"
+author: "Misja Mikkers and Gertjan Verhoeven"
+output: html_notebook
+---
+
+# Introduction
+
+
+The convention is to put the ticks `` around R commands. In Lecture 5 you will find out why this is the convention.
+
+# Packages
+
+For this notebook we need the tidyverse package (which should already be installed) and the `palmerpenguins` package.
+
+If you want to use a specific package (e.g. `tidyverse`) you can use the command `library(tidyverse)`. `tidyverse` is the package we use for data wrangling (lectures 2 and 3) and visualization (this lecture).
+
+To be able to visualize something, we also need data. For this notebook we will make some plots of penguins. The data are stored as well in a package. 
+
+If you type `library(palmerpenguins)`, you can access the data. If you run this command R may return the following error message
+
+"Error in library(palmerpenguins) : there is no package called ‘palmerpenguins’" 
+
+This error message means that you did not install the package `palmerpenguins`. You can install the package by using the tab "Packages" at the middle of the right side of the screen. Then push the "Install" tab and find the package `palmerpenguins`.
+
+
+
+
+```{r}
+# Your code here
+
+```
+
+
+
+
+# Data
+
+We can now access the data by typing the command: `data("penguins")`. At the top right of your screen under the tab "Environment" you will see 2 datasets
+
+- penguins (with 344 observations of 8 variabbles)
+- penguins_raw (with 344 observations of 17 variabbles)
+
+We will only use the first data set (penguins). You can have a look at the dataset by double clicking on the penguins dataset in the Environment or by using the commands
+
+- `head(penguins)` which gives you the top rows of the dataset
+- `tail(penguins)` which gives you the bottom rows of the dataset
+- `summary(penguins)` which gives you a summary table
+
+
+```{r}
+
+data("penguins")
+
+```
+
+```{r}
+summary(penguins)
+```
+
+The dataset contains 8 variables about 344 individual penguins. If you want to know what all variables mean you can use the command `?penguins` and an description of this dataset will appear at the bottom right of your screen.
+
+
+
+
+```{r}
+# Your code here to explore the penguins dataset
+
+```
+
+
+
+
+There are some "NA"'s in the dataset by running the code 
+
+`penguins <- penguins %>%
+  na.omit`
+  
+we get rid of the NA's. You should recognize the "pipe operator" `%>%` from the datacamp course "Introduction to the Tidyverse".
+
+
+
+
+
+```{r}
+
+# Your code here
+
+```
+
+
+
+
+As you may notice in the top right of your screen the penguins dataset now contains 333 observations of 8 variables. We lost 11 penguins.
+
+# Introduction to plotting with ggplot
+
+In 2005  Hadley Wickham created ggplot as part of his PhD. `ggplot` is a part of the tidyverse package and allows you to plot anything you can imagine.
+
+
+
+Any plot in ggplot has (at least) the following parts
+
+- the command `ggplot()` which tells R to plot.
+- a `geom_something` that tells ggplot which type of graph should be created. Examples are
+  - geom_point() for a scatterplot
+  - geom_line() for a line graph
+  - geom_bar() for a bar plot
+  - geom_histogram() for a histogram
+  - geom_boxplot()
+  - etc
+- We need to tell R where to look for the data. 
+- We need to specify what to do with the variables. `ggplot` makes it possible to link a certain _aesthetic_ of a graph to a column in a dataframe. Examples of are _Aesthetics_ :
+    - x-coordinate
+    - y-coordinate
+    - size and shape of points
+    - color fill
+    - line color
+    - line size
+    - transparency (alpha)
+    - line type
+    - etc
+  
+
+In this notebook we will use the convention to specify the data and aesthetics in the `geom_something()` command. It is also possible to do this in the `ggplot()` command. Both work.
+
+However, if you need 2 datasets for 2 different types of `geom_something()` (in other words you want to plot different layers), the convention we use here works better.
+
+So our commands for plots look like:
+
+`ggplot() +
+ geom_something(data = some data, aes(x = some variable, y = some variable, fill = some variable))` 
+ 
+ 
+
+# Scatterplots
+
+## First plot
+
+Suppose we are interested in the correlation between flipper length and bill length, because we assume that animals with a larger flipper will also have a larger bill.
+
+In that case we can plot the data as a scatterplot (`geom_point()`)with 
+
+- data = penguins
+- aesthetics (aes): x = flipper_length_mm and y =  bill_length_mm
+
+
+
+
+```{r}
+# Here your code
+
+```
+
+
+
+We have a already nice plot now. 
+
+## Add some color
+
+We could experiment a bit with adding colors and shapes to this plot by trying things like changing color, size and shape by for example adding `, color = "red", size = 3, shape = 1` after the `aes()` in `geom_point()`. 
+
+
+
+```{r}
+
+# Here your code
+
+
+```
+
+
+Because we added color etc outside the `aes()` we apply the same color etc to all datapoints. Is does nothing with with variables. 
+
+## Adding the dimensions of species and sex 
+
+It seems that there is a positive correlation between flipper length and bill length. However, we know that we have different species and sexes. In our next plot we will add an aesthetic "color" for species and "shape" for sex to our plot. We should do this inside the `aes()`, because now we want to make the color and the shape dependent on variables (species and sex.)
+
+
+
+```{r}
+# Here your code
+
+```
+
+
+## Make the plot nicer
+
+We can make the plot nicer by adding labels (`labs()`) to the plot. 
+
+- adding a title (you can be creative)
+- adding a subtitle (e.g. "plot by _your name_)
+- adding a label to the x-axis (Flipper length)
+- adding a label to the y-axis (Bill length)
+- adding a caption (e.g. Source: Penguins )
+
+Finally,  we can add a theme (you can find some examples at https://ggplot2.tidyverse.org/reference/ggtheme.html). We will use `theme_bw()`
+
+
+
+```{r}
+
+# Here your code
+
+```
+
+
+# Boxplots
+
+
+We could in more or less the same way make a boxplot. The assignment is:
+
+To make a boxplot:
+
+- with species on the x-axis
+- with body_mass_g on the the y-axis
+- with a fill for sex (so you will have different "boxes" for each sex)
+- change the label on the y-axis to "body mass in grams")
+
+
+
+
+
+We could also add another dimension by making a plot per island. With this plot we are able to see which species lives on which island and whether species living on different islands do have different body masses.
+We can split the plots per island by using for example
+
+`facet_wrap(~ island)`.
+
+
+
+```{r}
+# Here your code
+
+
+```
+
+
+We can also change the colors of our variable sex. 
+
+Have a look at the following website
+
+https://ggplot2.tidyverse.org/reference/scale_manual.html
+
+
+
+and change the colors of sex to any color you would like by using so called "hex codes" (e.g. the hexcode for the red color of the football club Manchester United is #DA020E) or color names (see for example http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
+
+
+Try to change the colors of male penguins to Manchester United red and females to the color mediumblue.
+
+_hint_: Why does scale_color_manual not work?
+
+
+
+```{r}
+# Here your code
+
+
+```
+
+
+End of Notebook

@@ -1,0 +1,119 @@
+---
+title: "Lecture 4"
+author: "Misja Mikkers and Gertjan Verhoeven"
+subtitle: Markdown exercises
+output:
+  pdf_document: default
+  html_document: default
+---
+
+In this notebook we will exercise using Markdown to format our documents.
+
+## What is markdown
+
+In Markdown you can just create plain text, but you can also do some formatting. That's what this lesson is about.
+
+*Remember you can google everything*
+
+A good ["cheat sheet can be found here"](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf)
+
+
+## Formatting
+
+For starters, it is possible to simply type text.
+
+## Structure
+
+But it is also possible to add structure to the text:
+
+```
+# Chapter
+## Section
+### Subsection
+#### etc
+##### etc
+```
+
+# Chapter
+## Section
+### Subsection
+#### etc
+##### etc
+
+<br>
+
+### Lists
+
+```
+* unordered list 
+* item 2
+  + sub-item 1
+  + sub-item 2
+  
+1. ordered list
+2. item 2
+  + sub-item 1
+  + sub-item 2
+```
+
+**Exercise**:
+
+Now try to make a list of main points (1,2,3) and sub-points (3a, 3b) and knit to see the result.
+
+
+### Text formatting
+
+**Exercise**:
+
+Make one word in this sentence bold.
+
+
+### Tables
+
+```
+First name | Surname |
+----------- | ------------ |
+Gertjan | Verhoeven |
+Misja | Mikkers |
+```
+
+**Exercise**:
+
+a. Copy this table
+b. Add a line with your own name
+c. Add a column with the title `Role` and fill in the roles after the names (valid roles are teacher, student, or teaching assistant)
+
+
+## Hyperlinks and images
+
+
+### Hyperlinks
+
+
+**Exercise**:
+
+Insert a hyperlink to the Tilburg University website.
+
+
+### Pictures
+
+
+**Exercise**:
+
+Insert the photo of Donald Knuth, the inventor of a predecessor of R Notebooks. The photo is in the images folder.
+
+### Formulas
+
+Write this image as an inline formula:
+
+![](images/formula.png)
+
+### Starting a new page
+
+You can force a pagebreak (new page) using this command.
+This only works when you convert to PDF.
+
+\newpage
+
+
+# End of this notebook
