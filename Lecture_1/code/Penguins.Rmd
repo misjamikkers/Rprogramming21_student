@@ -66,7 +66,7 @@ The dataset contains 8 variables about 344 individual penguins. If you want to k
 
 ```{r}
 # Your code here to explore the penguins dataset
-
+new code
 ```
 
 
