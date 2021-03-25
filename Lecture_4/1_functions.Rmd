@@ -1,8 +1,10 @@
 ---
 title: "Lecture 4"
-subtitle: "Using functions & for loops for superpowers"
 author: "Misja Mikkers and Gertjan Verhoeven"
-output: html_notebook
+subtitle: Using functions & for loops for superpowers
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 # Packages
