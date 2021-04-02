@@ -47,15 +47,6 @@ if (!!window.navigator.userAgent.match("MSIE 8")) {
 !function(a){"use strict";a.matchMedia=a.matchMedia||function(a){var b,c=a.documentElement,d=c.firstElementChild||c.firstChild,e=a.createElement("body"),f=a.createElement("div");return f.id="mq-test-1",f.style.cssText="position:absolute;top:-100em",e.style.background="none",e.appendChild(f),function(a){return f.innerHTML='&shy;<style media="'+a+'"> #mq-test-1 { width: 42px; }</style>',c.insertBefore(e,d),b=42===f.offsetWidth,c.removeChild(e),{matches:b,media:a}}}(a.document)}(this),function(a){"use strict";function b(){u(!0)}var c={};a.respond=c,c.update=function(){};var d=[],e=function(){var b=!1;try{b=new a.XMLHttpRequest}catch(c){b=new a.ActiveXObject("Microsoft.XMLHTTP")}return function(){return b}}(),f=function(a,b){var c=e();c&&(c.open("GET",a,!0),c.onreadystatechange=function(){4!==c.readyState||200!==c.status&&304!==c.status||b(c.responseText)},4!==c.readyState&&c.send(null))};if(c.ajax=f,c.queue=d,c.regex={media:/@media[^\{]+\{([^\{\}]*\{[^\}\{]*\})+/gi,keyframes:/@(?:\-(?:o|moz|webkit)\-)?keyframes[^\{]+\{(?:[^\{\}]*\{[^\}\{]*\})+[^\}]*\}/gi,urls:/(url\()['"]?([^\/\)'"][^:\)'"]+)['"]?(\))/g,findStyles:/@media *([^\{]+)\{([\S\s]+?)$/,only:/(only\s+)?([a-zA-Z]+)\s?/,minw:/\([\s]*min\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/,maxw:/\([\s]*max\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/},c.mediaQueriesSupported=a.matchMedia&&null!==a.matchMedia("only all")&&a.matchMedia("only all").matches,!c.mediaQueriesSupported){var g,h,i,j=a.document,k=j.documentElement,l=[],m=[],n=[],o={},p=30,q=j.getElementsByTagName("head")[0]||k,r=j.getElementsByTagName("base")[0],s=q.getElementsByTagName("link"),t=function(){var a,b=j.createElement("div"),c=j.body,d=k.style.fontSize,e=c&&c.style.fontSize,f=!1;return b.style.cssText="position:absolute;font-size:1em;width:1em",c||(c=f=j.createElement("body"),c.style.background="none"),k.style.fontSize="100%",c.style.fontSize="100%",c.appendChild(b),f&&k.insertBefore(c,k.firstChild),a=b.offsetWidth,f?k.removeChild(c):c.removeChild(b),k.style.fontSize=d,e&&(c.style.fontSize=e),a=i=parseFloat(a)},u=function(b){var c="clientWidth",d=k[c],e="CSS1Compat"===j.compatMode&&d||j.body[c]||d,f={},o=s[s.length-1],r=(new Date).getTime();if(b&&g&&p>r-g)return a.clearTimeout(h),h=a.setTimeout(u,p),void 0;g=r;for(var v in l)if(l.hasOwnProperty(v)){var w=l[v],x=w.minw,y=w.maxw,z=null===x,A=null===y,B="em";x&&(x=parseFloat(x)*(x.indexOf(B)>-1?i||t():1)),y&&(y=parseFloat(y)*(y.indexOf(B)>-1?i||t():1)),w.hasquery&&(z&&A||!(z||e>=x)||!(A||y>=e))||(f[w.media]||(f[w.media]=[]),f[w.media].push(m[w.rules]))}for(var C in n)n.hasOwnProperty(C)&&n[C]&&n[C].parentNode===q&&q.removeChild(n[C]);n.length=0;for(var D in f)if(f.hasOwnProperty(D)){var E=j.createElement("style"),F=f[D].join("\n");E.type="text/css",E.media=D,q.insertBefore(E,o.nextSibling),E.styleSheet?E.styleSheet.cssText=F:E.appendChild(j.createTextNode(F)),n.push(E)}},v=function(a,b,d){var e=a.replace(c.regex.keyframes,"").match(c.regex.media),f=e&&e.length||0;b=b.substring(0,b.lastIndexOf("/"));var g=function(a){return a.replace(c.regex.urls,"$1"+b+"$2$3")},h=!f&&d;b.length&&(b+="/"),h&&(f=1);for(var i=0;f>i;i++){var j,k,n,o;h?(j=d,m.push(g(a))):(j=e[i].match(c.regex.findStyles)&&RegExp.$1,m.push(RegExp.$2&&g(RegExp.$2))),n=j.split(","),o=n.length;for(var p=0;o>p;p++)k=n[p],l.push({media:k.split("(")[0].match(c.regex.only)&&RegExp.$2||"all",rules:m.length-1,hasquery:k.indexOf("(")>-1,minw:k.match(c.regex.minw)&&parseFloat(RegExp.$1)+(RegExp.$2||""),maxw:k.match(c.regex.maxw)&&parseFloat(RegExp.$1)+(RegExp.$2||"")})}u()},w=function(){if(d.length){var b=d.shift();f(b.href,function(c){v(c,b.href,b.media),o[b.href]=!0,a.setTimeout(function(){w()},0)})}},x=function(){for(var b=0;b<s.length;b++){var c=s[b],e=c.href,f=c.media,g=c.rel&&"stylesheet"===c.rel.toLowerCase();e&&g&&!o[e]&&(c.styleSheet&&c.styleSheet.rawCssText?(v(c.styleSheet.rawCssText,e,f),o[e]=!0):(!/^([a-zA-Z:]*\/\/)/.test(e)&&!r||e.replace(RegExp.$1,"").split("/")[0]===a.location.host)&&("//"===e.substring(0,2)&&(e=a.location.protocol+e),d.push({href:e,media:f})))}w()};x(),c.update=x,c.getEmValue=t,a.addEventListener?a.addEventListener("resize",b,!1):a.attachEvent&&a.attachEvent("onresize",b)}}(this);
 };
 </script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
 <style type="text/css">.pagedtable {
 overflow: auto;
 padding-left: 8px;
@@ -1494,7 +1485,7 @@ window.initializeCodeFolding = function(show) {
     // create a collapsable div to wrap the code in
     var div = $('<div class="collapse r-code-collapse"></div>');
     var showThis = (show || $(this).hasClass('fold-show')) && !$(this).hasClass('fold-hide');
-    if (showThis) div.collapse('show');
+    if (showThis) div.addClass('in');
     var id = 'rcode-643E0F36' + currentIndex++;
     div.attr('id', id);
     $(this).before(div);
@@ -1502,7 +1493,7 @@ window.initializeCodeFolding = function(show) {
 
     // add a show code button right above
     var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
-    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
+    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
         .attr('data-toggle', 'collapse')
@@ -1570,6 +1561,11 @@ color: rgb(3, 106, 7);
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -1583,6 +1579,30 @@ if (window.hljs) {
 
 
 <style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
 #rmd-source-code {
   display: none;
 }
@@ -1598,6 +1618,10 @@ if (window.hljs) {
   margin-left: auto;
   margin-right: auto;
 }
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
 img {
   max-width:100%;
 }
@@ -1612,9 +1636,6 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
-}
-pre code {
-  padding: 0;
 }
 </style>
 
@@ -1652,6 +1673,7 @@ pre code {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
+  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -1718,11 +1740,11 @@ pre code {
 
 
 
-<div id="header">
+<div class="fluid-row" id="header">
 
-<div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
 <li role="separator" class="divider"></li>
@@ -1743,106 +1765,83 @@ pre code {
 <h1>Packages needed</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHJlYWR4bClcbmxpYnJhcnkod3JpdGV4bClcbmxpYnJhcnkocGFsbWVycGVuZ3VpbnMpXG5saWJyYXJ5KGdhcG1pbmRlcilcbmBgYFxuYGBgIn0= -->
-<pre class="r"><code>```r
-library(tidyverse)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHJlYWR4bClcbmxpYnJhcnkod3JpdGV4bClcbmxpYnJhcnkocGFsbWVycGVuZ3VpbnMpXG5saWJyYXJ5KGdhcG1pbmRlcilcbmBgYFxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r</p>
+<pre class="r"><code>library(tidyverse)
 library(readxl)
 library(writexl)
 library(palmerpenguins)
 library(gapminder)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-# Introduction
-
-In this pdf we will show you examples of exam questions.
-
-
-# Assignment 0
-
-Pull the repository https://github.com/misjamikkers/Rprogramming21_student to find the data needed for the exam, the exam and the answers.
-
-
-# Question 1
-
-
-In the Sourcedata folder (and on Canvas) you will find the excelfile with the name dataQ1.xlsx
-
-Your task is to 
-
-1. read this data into a R notebook
-2. keep the rows of Group1
-3. make a scatterplot with Variable_1 on the x-axis and Variable_2 on the y_axis
-
-Which figure do you recognize in the graph?
-
-a. Dinosaur
-b. Heart
-c. the letter &quot;L&quot;
-d. the number &quot;1&quot;
-
-
-
-# Question 2
-
-Your task is to
-
-- use the penguins data from the palmerpenguins package
-- keep the rows with year 2009
-- create a boxplot with on the x-axis Species per sex and on the y-axis body_mass_g.
-
-Which species per sex has the highest median body mass?
-
-a. females of the Adelie species
-b. males of the Adelie species
-c. females of the Chinstrap species
-d. males of the Chinstrap species
-e. females of the Gentoo species
-f. males of the Gentoo species
-g. the NA group
-
-
-# Question 3
-
-Your task is 
-
-- use the data of the gapminder package
-- keep the rows of year 2007
-- calculate the medium life expectancy (lifeExp) per continent
-
-What is the median life expectancy of Oceania?
-Round your answer to the nearest integer.
-
-
-
-
-# Question 4a
-
-Your task is to
-
-- Copy the code below (NOTE: include the set.seed!!!) into a notebook
-- Use left_join to merge m1 and m2 (in that order!) in to a dataframe with the name &quot;m3&quot;
-
-
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5zZXQuc2VlZCgxMjMpXG5cbm0xIDwtIHRpYmJsZShpZCA9IHNhbXBsZSh4PSAxOjEwMCwgc2l6ZSA9IDcwLCByZXBsYWNlID0gVFJVRSkpICU+JVxuICBtdXRhdGUoeCA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMCwgc2QgPSAxKSlcblxubTIgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gODAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lXG4gIG11dGF0ZSh5ID0gcm5vcm0obiA9IGxlbmd0aChpZCksIG1lYW4gPSAxMCwgc2QgPSA1ICkpXG5cblxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-
+<pre><code></code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this pdf we will show you examples of exam questions.</p>
+</div>
+<div id="assignment-0" class="section level1">
+<h1>Assignment 0</h1>
+<p>Pull the repository <a href="https://github.com/misjamikkers/Rprogramming21_student" class="uri">https://github.com/misjamikkers/Rprogramming21_student</a> to find the data needed for the exam, the exam and the answers.</p>
+</div>
+<div id="question-1" class="section level1">
+<h1>Question 1</h1>
+<p>In the Sourcedata folder (and on Canvas) you will find the excelfile with the name dataQ1.xlsx</p>
+<p>Your task is to</p>
+<ol style="list-style-type: decimal">
+<li>read this data into a R notebook</li>
+<li>keep the rows of Group1</li>
+<li>make a scatterplot with Variable_1 on the x-axis and Variable_2 on the y_axis</li>
+</ol>
+<p>Which figure do you recognize in the graph?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Dinosaur</li>
+<li>Heart</li>
+<li>the letter “L”</li>
+<li>the number “1”</li>
+</ol>
+</div>
+<div id="question-2" class="section level1">
+<h1>Question 2</h1>
+<p>Your task is to</p>
+<ul>
+<li>use the penguins data from the palmerpenguins package</li>
+<li>keep the rows with year 2009</li>
+<li>create a boxplot with on the x-axis Species per sex and on the y-axis body_mass_g.</li>
+</ul>
+<p>Which species per sex has the highest median body mass?</p>
+<ol style="list-style-type: lower-alpha">
+<li>females of the Adelie species</li>
+<li>males of the Adelie species</li>
+<li>females of the Chinstrap species</li>
+<li>males of the Chinstrap species</li>
+<li>females of the Gentoo species</li>
+<li>males of the Gentoo species</li>
+<li>the NA group</li>
+</ol>
+</div>
+<div id="question-3" class="section level1">
+<h1>Question 3</h1>
+<p>Your task is</p>
+<ul>
+<li>use the data of the gapminder package</li>
+<li>keep the rows of year 2007</li>
+<li>calculate the medium life expectancy (lifeExp) per continent</li>
+</ul>
+<p>What is the median life expectancy of Oceania? Round your answer to the nearest integer.</p>
+</div>
+<div id="question-4a" class="section level1">
+<h1>Question 4a</h1>
+<p>Your task is to</p>
+<ul>
+<li>Copy the code below (NOTE: include the set.seed!!!) into a notebook</li>
+<li>Use left_join to merge m1 and m2 (in that order!) in to a dataframe with the name “m3”</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zZXQuc2VlZCgxMjMpXG5cbm0xIDwtIHRpYmJsZShpZCA9IHNhbXBsZSh4PSAxOjEwMCwgc2l6ZSA9IDcwLCByZXBsYWNlID0gVFJVRSkpICU+JVxuICBtdXRhdGUoeCA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMCwgc2QgPSAxKSlcblxubTIgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gODAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lXG4gIG11dGF0ZSh5ID0gcm5vcm0obiA9IGxlbmd0aChpZCksIG1lYW4gPSAxMCwgc2QgPSA1ICkpXG5cblxuYGBgIn0= -->
+<pre class="r"><code>
 set.seed(123)
 
 m1 &lt;- tibble(id = sample(x= 1:100, size = 70, replace = TRUE)) %&gt;%
@@ -1851,7 +1850,6 @@ m1 &lt;- tibble(id = sample(x= 1:100, size = 70, replace = TRUE)) %&gt;%
 m2 &lt;- tibble(id = sample(x= 1:100, size = 80, replace = TRUE)) %&gt;%
   mutate(y = rnorm(n = length(id), mean = 10, sd = 5 ))
 </code></pre>
-<p>```</p>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1910,20 +1908,20 @@ m2 &lt;- tibble(id = sample(x= 1:100, size = 80, replace = TRUE)) %&gt;%
 <li>The code makes sure that this code chunk will not be shown in the output document (e.g. the pdf)</li>
 <li>The code makes sure that all the code chunks after this chunk will not be shown in the output document (e.g. the pdf)</li>
 </ol>
-</div>
-<div id="question-6" class="section level1">
-<h1>Question 6</h1>
+<div id="question-6" class="section level2">
+<h2>Question 6</h2>
 <p>Your task is to</p>
 <ul>
 <li>open a notebook</li>
 <li>simulate some data:
 <ul>
 <li>USE <code>set.seed(123)</code> [This is really important!]</li>
-<li>generate an x-variable in a tibble with a normal distribution with mean 100, and standard deviation 10. We need 1000 observations</li>
-<li>make a new column y with the formula <span class="math inline">\(log(x) + 36 * x^5\)</span></li>
+<li>generate an x-variable in a tibble with a normal distribution with mean 0, and standard deviation 15. We need 1000 observations</li>
+<li>make a new column y with the formula <span class="math inline">\(sin(x^2) + 33 * x^4\)</span></li>
 <li>calculate the mean of the variable y.</li>
 </ul></li>
 </ul>
+</div>
 </div>
 <div id="question-7" class="section level1">
 <h1>Question 7</h1>
@@ -1932,7 +1930,7 @@ m2 &lt;- tibble(id = sample(x= 1:100, size = 80, replace = TRUE)) %&gt;%
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByYWN0aWNlIGZvciBFeGFtLCBBbnN3ZXJzIg0KYXV0aG9yOiAiTWlzamEgTWlra2VycywgR2VydGphbiBWZXJob2V2ZW4gJiBIYXMgdmFuIFZsb2tob3ZlbiINCm91dHB1dDoNCiAgcGRmX2RvY3VtZW50OiBkZWZhdWx0DQogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQNCi0tLQ0KDQojIFBhY2thZ2VzIG5lZWRlZA0KDQpgYGB7ciwgd2FybmluZz1GQUxTRSwgbWVzc2FnZT1GQUxTRX0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShyZWFkeGwpDQpsaWJyYXJ5KHdyaXRleGwpDQpsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKQ0KbGlicmFyeShnYXBtaW5kZXIpDQpgYGANCg0KIyBJbnRyb2R1Y3Rpb24NCg0KSW4gdGhpcyBwZGYgd2Ugd2lsbCBzaG93IHlvdSBleGFtcGxlcyBvZiBleGFtIHF1ZXN0aW9ucy4NCg0KDQojIEFzc2lnbm1lbnQgMA0KDQpQdWxsIHRoZSByZXBvc2l0b3J5IGh0dHBzOi8vZ2l0aHViLmNvbS9taXNqYW1pa2tlcnMvUnByb2dyYW1taW5nMjFfc3R1ZGVudCB0byBmaW5kIHRoZSBkYXRhIG5lZWRlZCBmb3IgdGhlIGV4YW0sIHRoZSBleGFtIGFuZCB0aGUgYW5zd2Vycy4NCg0KDQojIFF1ZXN0aW9uIDENCg0KDQpJbiB0aGUgU291cmNlZGF0YSBmb2xkZXIgKGFuZCBvbiBDYW52YXMpIHlvdSB3aWxsIGZpbmQgdGhlIGV4Y2VsZmlsZSB3aXRoIHRoZSBuYW1lIGRhdGFRMS54bHN4DQoNCllvdXIgdGFzayBpcyB0byANCg0KMS4gcmVhZCB0aGlzIGRhdGEgaW50byBhIFIgbm90ZWJvb2sNCjIuIGtlZXAgdGhlIHJvd3Mgb2YgR3JvdXAxDQozLiBtYWtlIGEgc2NhdHRlcnBsb3Qgd2l0aCBWYXJpYWJsZV8xIG9uIHRoZSB4LWF4aXMgYW5kIFZhcmlhYmxlXzIgb24gdGhlIHlfYXhpcw0KDQpXaGljaCBmaWd1cmUgZG8geW91IHJlY29nbml6ZSBpbiB0aGUgZ3JhcGg/DQoNCmEuIERpbm9zYXVyDQpiLiBIZWFydA0KYy4gdGhlIGxldHRlciAiTCINCmQuIHRoZSBudW1iZXIgIjEiDQoNCg0KDQojIFF1ZXN0aW9uIDINCg0KWW91ciB0YXNrIGlzIHRvDQoNCi0gdXNlIHRoZSBwZW5ndWlucyBkYXRhIGZyb20gdGhlIHBhbG1lcnBlbmd1aW5zIHBhY2thZ2UNCi0ga2VlcCB0aGUgcm93cyB3aXRoIHllYXIgMjAwOQ0KLSBjcmVhdGUgYSBib3hwbG90IHdpdGggb24gdGhlIHgtYXhpcyBTcGVjaWVzIHBlciBzZXggYW5kIG9uIHRoZSB5LWF4aXMgYm9keV9tYXNzX2cuDQoNCldoaWNoIHNwZWNpZXMgcGVyIHNleCBoYXMgdGhlIGhpZ2hlc3QgbWVkaWFuIGJvZHkgbWFzcz8NCg0KYS4gZmVtYWxlcyBvZiB0aGUgQWRlbGllIHNwZWNpZXMNCmIuIG1hbGVzIG9mIHRoZSBBZGVsaWUgc3BlY2llcw0KYy4gZmVtYWxlcyBvZiB0aGUgQ2hpbnN0cmFwIHNwZWNpZXMNCmQuIG1hbGVzIG9mIHRoZSBDaGluc3RyYXAgc3BlY2llcw0KZS4gZmVtYWxlcyBvZiB0aGUgR2VudG9vIHNwZWNpZXMNCmYuIG1hbGVzIG9mIHRoZSBHZW50b28gc3BlY2llcw0KZy4gdGhlIE5BIGdyb3VwDQoNCg0KIyBRdWVzdGlvbiAzDQoNCllvdXIgdGFzayBpcyANCg0KLSB1c2UgdGhlIGRhdGEgb2YgdGhlIGdhcG1pbmRlciBwYWNrYWdlDQotIGtlZXAgdGhlIHJvd3Mgb2YgeWVhciAyMDA3DQotIGNhbGN1bGF0ZSB0aGUgbWVkaXVtIGxpZmUgZXhwZWN0YW5jeSAobGlmZUV4cCkgcGVyIGNvbnRpbmVudA0KDQpXaGF0IGlzIHRoZSBtZWRpYW4gbGlmZSBleHBlY3RhbmN5IG9mIE9jZWFuaWE/DQpSb3VuZCB5b3VyIGFuc3dlciB0byB0aGUgbmVhcmVzdCBpbnRlZ2VyLg0KDQoNCg0KDQojIFF1ZXN0aW9uIDRhDQoNCllvdXIgdGFzayBpcyB0bw0KDQotIENvcHkgdGhlIGNvZGUgYmVsb3cgKE5PVEU6IGluY2x1ZGUgdGhlIHNldC5zZWVkISEhKSBpbnRvIGEgbm90ZWJvb2sNCi0gVXNlIGxlZnRfam9pbiB0byBtZXJnZSBtMSBhbmQgbTIgKGluIHRoYXQgb3JkZXIhKSBpbiB0byBhIGRhdGFmcmFtZSB3aXRoIHRoZSBuYW1lICJtMyINCg0KDQoNCmBgYHtyfQ0KDQpzZXQuc2VlZCgxMjMpDQoNCm0xIDwtIHRpYmJsZShpZCA9IHNhbXBsZSh4PSAxOjEwMCwgc2l6ZSA9IDcwLCByZXBsYWNlID0gVFJVRSkpICU+JQ0KICBtdXRhdGUoeCA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMCwgc2QgPSAxKSkNCg0KbTIgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gODAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lDQogIG11dGF0ZSh5ID0gcm5vcm0obiA9IGxlbmd0aChpZCksIG1lYW4gPSAxMCwgc2QgPSA1ICkpDQoNCg0KYGBgDQoNCg0KDQoNCkhvdyBtYW55IG9ic2VydmF0aW9ucyAocm93cykgZG9lcyBtMyBoYXZlPw0KDQoNCiMjIFF1ZXN0aW9uIDRiDQoNCllvdXIgdGFzayBpcyB0byB1c2UgbTMgZnJvbSBxdWVzdGlvbiA0YSB0bw0KDQotIGNyZWF0ZSBhIGxvbmcgZGF0YWZyYW1lIG00IHdpdGggYSBuZXcgY29sdW0gIlZhciIgdGhhdCBpbmRpY2F0ZXMgd2hldGhlciB0aGUgcm93IGNvbmNlcm5lZCBzaG93cyBhIHZhbHVlIG9mICJ4IiBvciAieSIgYW5kIHRoZSB2YWx1ZXMgaW4gY29sdW1uICJWYWwiLg0KDQpTbyB5b3VyIGRhdGFmcmFtZSBzaG91bGQgbG9vayBsaWtlOg0KDQoNCnxpZHxWYXJ8VmFsfA0KfC0tLXwtLS18LS0tLXwNCnwzMXwgeHwgLTAuMTYzOTMxMHwNCnwzMXwgeXwgMTQuMzk2ODIwN3wNCnwuLi58Li4ufC4uLi58DQp8Li4uLnwuLi58Li4uLnwNCg0KDQotIFRoZW4gZGVsZXRlIGFsbCBOQSdzLg0KDQoNCkhvdyBtYW55IG9ic2VydmF0aW9ucyAocm93cykgZG9lcyBtNCBoYXZlPw0KDQoNCg0KDQojIFF1ZXN0aW9uIDUNCg0KDQpXaGF0IGRvZXMgdGhpcyBjb2RlIGRvPw0KDQpga25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBGQUxTRSlgDQoNCg0KYS4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IHRoaXMgY29kZSBjaHVuayB3aWxsIG5vdCBiZSBleGVjdXRlZA0KYi4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IGFsbCB0aGUgY29kZSBjaHVua3MgYWZ0ZXIgdGhpcyBjb21tYW5kIGluIHRoZSBSbWQgd2lsbCBub3QgYmUgZXhlY3V0ZWQNCmMuIFRoZSBjb2RlIG1ha2VzIHN1cmUgdGhhdCB0aGlzIGNvZGUgY2h1bmsgd2lsbCBub3QgYmUgc2hvd24gaW4gdGhlIG91dHB1dCBkb2N1bWVudCAoZS5nLiB0aGUgcGRmKQ0KZC4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IGFsbCB0aGUgY29kZSBjaHVua3MgYWZ0ZXIgdGhpcyBjaHVuayB3aWxsIG5vdCBiZSBzaG93biBpbiB0aGUgb3V0cHV0IGRvY3VtZW50IChlLmcuIHRoZSBwZGYpIA0KDQoNCg0KDQojIFF1ZXN0aW9uIDYNCg0KWW91ciB0YXNrIGlzIHRvDQoNCi0gb3BlbiBhIG5vdGVib29rDQotIHNpbXVsYXRlIHNvbWUgZGF0YToNCiAgICAtIFVTRSBgc2V0LnNlZWQoMTIzKWAgW1RoaXMgaXMgcmVhbGx5IGltcG9ydGFudCFdDQogICAgLSBnZW5lcmF0ZSBhbiB4LXZhcmlhYmxlIGluIGEgdGliYmxlIHdpdGggYSBub3JtYWwgZGlzdHJpYnV0aW9uIHdpdGggbWVhbiAxMDAsIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gMTAuIFdlIG5lZWQgMTAwMCBvYnNlcnZhdGlvbnMNCiAgICAtIG1ha2UgYSBuZXcgY29sdW1uIHkgd2l0aCB0aGUgZm9ybXVsYSAkbG9nKHgpICsgMzYgKiB4XjUkDQogICAgLSBjYWxjdWxhdGUgdGhlIG1lYW4gb2YgdGhlIHZhcmlhYmxlIHkuDQoNCg0KDQoNCiMgUXVlc3Rpb24gNw0KDQpDcmVhdGUgYSBmdW5jdGlvbiB0aGF0IGZvciB0aGUgbnVtYmVycyB4IHRvIHggKyAyICogJFxwaSQgY2FsbHMgdGhlIGZ1bmN0aW9uIGBzaW4oeClgIGFuZCBhZGRzIHRoZSByZXN1bHRzLg0KDQpUaGUgYW5zd2VyIHdoZW4geW91IGV4ZWN1dGUgeW91ciBmdW5jdGlvbiB3aXRoIHRoZSBhcmd1bWVudCAzIHNob3VsZCBiZSAwLjk4Nzg0MDENCg0KDQoNCg0K</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHJhY3RpY2UgZm9yIEV4YW0sIEFuc3dlcnMiCmF1dGhvcjogIk1pc2phIE1pa2tlcnMsIEdlcnRqYW4gVmVyaG9ldmVuICYgSGFzIHZhbiBWbG9raG92ZW4iCm91dHB1dDoKICBwZGZfZG9jdW1lbnQ6IGRlZmF1bHQKICBodG1sX25vdGVib29rOiBkZWZhdWx0Ci0tLQoKIyBQYWNrYWdlcyBuZWVkZWQKCmBgYHtyLCB3YXJuaW5nPUZBTFNFLCBtZXNzYWdlPUZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShyZWFkeGwpCmxpYnJhcnkod3JpdGV4bCkKbGlicmFyeShwYWxtZXJwZW5ndWlucykKbGlicmFyeShnYXBtaW5kZXIpCmBgYAoKIyBJbnRyb2R1Y3Rpb24KCkluIHRoaXMgcGRmIHdlIHdpbGwgc2hvdyB5b3UgZXhhbXBsZXMgb2YgZXhhbSBxdWVzdGlvbnMuCgoKIyBBc3NpZ25tZW50IDAKClB1bGwgdGhlIHJlcG9zaXRvcnkgaHR0cHM6Ly9naXRodWIuY29tL21pc2phbWlra2Vycy9ScHJvZ3JhbW1pbmcyMV9zdHVkZW50IHRvIGZpbmQgdGhlIGRhdGEgbmVlZGVkIGZvciB0aGUgZXhhbSwgdGhlIGV4YW0gYW5kIHRoZSBhbnN3ZXJzLgoKCiMgUXVlc3Rpb24gMQoKCkluIHRoZSBTb3VyY2VkYXRhIGZvbGRlciAoYW5kIG9uIENhbnZhcykgeW91IHdpbGwgZmluZCB0aGUgZXhjZWxmaWxlIHdpdGggdGhlIG5hbWUgZGF0YVExLnhsc3gKCllvdXIgdGFzayBpcyB0byAKCjEuIHJlYWQgdGhpcyBkYXRhIGludG8gYSBSIG5vdGVib29rCjIuIGtlZXAgdGhlIHJvd3Mgb2YgR3JvdXAxCjMuIG1ha2UgYSBzY2F0dGVycGxvdCB3aXRoIFZhcmlhYmxlXzEgb24gdGhlIHgtYXhpcyBhbmQgVmFyaWFibGVfMiBvbiB0aGUgeV9heGlzCgpXaGljaCBmaWd1cmUgZG8geW91IHJlY29nbml6ZSBpbiB0aGUgZ3JhcGg/CgphLiBEaW5vc2F1cgpiLiBIZWFydApjLiB0aGUgbGV0dGVyICJMIgpkLiB0aGUgbnVtYmVyICIxIgoKCgojIFF1ZXN0aW9uIDIKCllvdXIgdGFzayBpcyB0bwoKLSB1c2UgdGhlIHBlbmd1aW5zIGRhdGEgZnJvbSB0aGUgcGFsbWVycGVuZ3VpbnMgcGFja2FnZQotIGtlZXAgdGhlIHJvd3Mgd2l0aCB5ZWFyIDIwMDkKLSBjcmVhdGUgYSBib3hwbG90IHdpdGggb24gdGhlIHgtYXhpcyBTcGVjaWVzIHBlciBzZXggYW5kIG9uIHRoZSB5LWF4aXMgYm9keV9tYXNzX2cuCgpXaGljaCBzcGVjaWVzIHBlciBzZXggaGFzIHRoZSBoaWdoZXN0IG1lZGlhbiBib2R5IG1hc3M/CgphLiBmZW1hbGVzIG9mIHRoZSBBZGVsaWUgc3BlY2llcwpiLiBtYWxlcyBvZiB0aGUgQWRlbGllIHNwZWNpZXMKYy4gZmVtYWxlcyBvZiB0aGUgQ2hpbnN0cmFwIHNwZWNpZXMKZC4gbWFsZXMgb2YgdGhlIENoaW5zdHJhcCBzcGVjaWVzCmUuIGZlbWFsZXMgb2YgdGhlIEdlbnRvbyBzcGVjaWVzCmYuIG1hbGVzIG9mIHRoZSBHZW50b28gc3BlY2llcwpnLiB0aGUgTkEgZ3JvdXAKCgojIFF1ZXN0aW9uIDMKCllvdXIgdGFzayBpcyAKCi0gdXNlIHRoZSBkYXRhIG9mIHRoZSBnYXBtaW5kZXIgcGFja2FnZQotIGtlZXAgdGhlIHJvd3Mgb2YgeWVhciAyMDA3Ci0gY2FsY3VsYXRlIHRoZSBtZWRpdW0gbGlmZSBleHBlY3RhbmN5IChsaWZlRXhwKSBwZXIgY29udGluZW50CgpXaGF0IGlzIHRoZSBtZWRpYW4gbGlmZSBleHBlY3RhbmN5IG9mIE9jZWFuaWE/ClJvdW5kIHlvdXIgYW5zd2VyIHRvIHRoZSBuZWFyZXN0IGludGVnZXIuCgoKCgojIFF1ZXN0aW9uIDRhCgpZb3VyIHRhc2sgaXMgdG8KCi0gQ29weSB0aGUgY29kZSBiZWxvdyAoTk9URTogaW5jbHVkZSB0aGUgc2V0LnNlZWQhISEpIGludG8gYSBub3RlYm9vawotIFVzZSBsZWZ0X2pvaW4gdG8gbWVyZ2UgbTEgYW5kIG0yIChpbiB0aGF0IG9yZGVyISkgaW4gdG8gYSBkYXRhZnJhbWUgd2l0aCB0aGUgbmFtZSAibTMiCgoKCmBgYHtyfQoKc2V0LnNlZWQoMTIzKQoKbTEgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gNzAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lCiAgbXV0YXRlKHggPSBybm9ybShuID0gbGVuZ3RoKGlkKSwgbWVhbiA9IDAsIHNkID0gMSkpCgptMiA8LSB0aWJibGUoaWQgPSBzYW1wbGUoeD0gMToxMDAsIHNpemUgPSA4MCwgcmVwbGFjZSA9IFRSVUUpKSAlPiUKICBtdXRhdGUoeSA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMTAsIHNkID0gNSApKQoKCmBgYAoKCgoKSG93IG1hbnkgb2JzZXJ2YXRpb25zIChyb3dzKSBkb2VzIG0zIGhhdmU/CgoKIyMgUXVlc3Rpb24gNGIKCllvdXIgdGFzayBpcyB0byB1c2UgbTMgZnJvbSBxdWVzdGlvbiA0YSB0bwoKLSBjcmVhdGUgYSBsb25nIGRhdGFmcmFtZSBtNCB3aXRoIGEgbmV3IGNvbHVtICJWYXIiIHRoYXQgaW5kaWNhdGVzIHdoZXRoZXIgdGhlIHJvdyBjb25jZXJuZWQgc2hvd3MgYSB2YWx1ZSBvZiAieCIgb3IgInkiIGFuZCB0aGUgdmFsdWVzIGluIGNvbHVtbiAiVmFsIi4KClNvIHlvdXIgZGF0YWZyYW1lIHNob3VsZCBsb29rIGxpa2U6CgoKfGlkfFZhcnxWYWx8CnwtLS18LS0tfC0tLS18CnwzMXwgeHwgLTAuMTYzOTMxMHwKfDMxfCB5fCAxNC4zOTY4MjA3fAp8Li4ufC4uLnwuLi4ufAp8Li4uLnwuLi58Li4uLnwKCgotIFRoZW4gZGVsZXRlIGFsbCBOQSdzLgoKCkhvdyBtYW55IG9ic2VydmF0aW9ucyAocm93cykgZG9lcyBtNCBoYXZlPwoKCgoKIyBRdWVzdGlvbiA1CgoKV2hhdCBkb2VzIHRoaXMgY29kZSBkbz8KCmBrbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IEZBTFNFKWAKCgphLiBUaGUgY29kZSBtYWtlcyBzdXJlIHRoYXQgdGhpcyBjb2RlIGNodW5rIHdpbGwgbm90IGJlIGV4ZWN1dGVkCmIuIFRoZSBjb2RlIG1ha2VzIHN1cmUgdGhhdCBhbGwgdGhlIGNvZGUgY2h1bmtzIGFmdGVyIHRoaXMgY29tbWFuZCBpbiB0aGUgUm1kIHdpbGwgbm90IGJlIGV4ZWN1dGVkCmMuIFRoZSBjb2RlIG1ha2VzIHN1cmUgdGhhdCB0aGlzIGNvZGUgY2h1bmsgd2lsbCBub3QgYmUgc2hvd24gaW4gdGhlIG91dHB1dCBkb2N1bWVudCAoZS5nLiB0aGUgcGRmKQpkLiBUaGUgY29kZSBtYWtlcyBzdXJlIHRoYXQgYWxsIHRoZSBjb2RlIGNodW5rcyBhZnRlciB0aGlzIGNodW5rIHdpbGwgbm90IGJlIHNob3duIGluIHRoZSBvdXRwdXQgZG9jdW1lbnQgKGUuZy4gdGhlIHBkZikgCgoKCgojIyBRdWVzdGlvbiA2CgpZb3VyIHRhc2sgaXMgdG8KCi0gb3BlbiBhIG5vdGVib29rCi0gc2ltdWxhdGUgc29tZSBkYXRhOgogICAgLSBVU0UgYHNldC5zZWVkKDEyMylgIFtUaGlzIGlzIHJlYWxseSBpbXBvcnRhbnQhXQogICAgLSBnZW5lcmF0ZSBhbiB4LXZhcmlhYmxlIGluIGEgdGliYmxlIHdpdGggYSBub3JtYWwgZGlzdHJpYnV0aW9uIHdpdGggbWVhbiAwLCBhbmQgc3RhbmRhcmQgZGV2aWF0aW9uIDE1LiBXZSBuZWVkIDEwMDAgb2JzZXJ2YXRpb25zCiAgICAtIG1ha2UgYSBuZXcgY29sdW1uIHkgd2l0aCB0aGUgZm9ybXVsYSAkc2luKHheMikgKyAzMyAqIHheNCQKICAgIC0gY2FsY3VsYXRlIHRoZSBtZWFuIG9mIHRoZSB2YXJpYWJsZSB5LgoKCgoKIyBRdWVzdGlvbiA3CgpDcmVhdGUgYSBmdW5jdGlvbiB0aGF0IGZvciB0aGUgbnVtYmVycyB4IHRvIHggKyAyICogJFxwaSQgY2FsbHMgdGhlIGZ1bmN0aW9uIGBzaW4oeClgIGFuZCBhZGRzIHRoZSByZXN1bHRzLgoKVGhlIGFuc3dlciB3aGVuIHlvdSBleGVjdXRlIHlvdXIgZnVuY3Rpb24gd2l0aCB0aGUgYXJndW1lbnQgMyBzaG91bGQgYmUgMC45ODc4NDAxCgoKCgo=</div>
 
 
 
@@ -1971,7 +1969,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
+    $(this).parent().toggleClass('nav-tabs-open')
   });
 });
 </script>

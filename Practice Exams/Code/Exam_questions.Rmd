@@ -148,15 +148,15 @@ d. The code makes sure that all the code chunks after this chunk will not be sho
 
 
 
-# Question 6
+## Question 6
 
 Your task is to
 
 - open a notebook
 - simulate some data:
     - USE `set.seed(123)` [This is really important!]
-    - generate an x-variable in a tibble with a normal distribution with mean 100, and standard deviation 10. We need 1000 observations
-    - make a new column y with the formula $log(x) + 36 * x^5$
+    - generate an x-variable in a tibble with a normal distribution with mean 0, and standard deviation 15. We need 1000 observations
+    - make a new column y with the formula $sin(x^2) + 33 * x^4$
     - calculate the mean of the variable y.
 
 
