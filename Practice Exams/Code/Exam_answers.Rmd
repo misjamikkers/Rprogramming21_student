@@ -343,7 +343,7 @@ my_func <- function(x){
   total <- 0
   
   for (i in x: (x + 2* pi)) {
-    total <- total + sin(x)
+    total <- total + sin(i)
     
     print(total)
   }

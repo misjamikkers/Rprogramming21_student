@@ -166,7 +166,7 @@ Your task is to
 
 Create a function that for the numbers x to x + 2 * $\pi$ calls the function `sin(x)` and adds the results.
 
-The answer when you execute your function with the argument 3 should be 0.9878401
+The answer when you execute your function with the argument 3 should be 0.2044411
 
 
 
