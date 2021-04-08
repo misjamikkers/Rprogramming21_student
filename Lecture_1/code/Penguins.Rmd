@@ -29,7 +29,7 @@ This error message means that you did not install the package `palmerpenguins`. 
 
 ```{r}
 # Your code here
-
+'lol'
 ```
 
 
