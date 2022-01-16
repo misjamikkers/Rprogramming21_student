@@ -87,6 +87,9 @@ No surprises there
 
 q1 <- read_xlsx("../Sourcedata/dataQ1.xlsx")
 
+
+
+
 ```
 
 

@@ -325,6 +325,42 @@ With the command `summary(name_dataframe)`, you will get a summary of your datas
 Show the summary of the football dataframe
 
 
+
+```{r}
+# Here your code
+
+
+
+```
+
+
+
+# Exam -> read RDS
+
+
+In the exams last year we noticed that due to differences in settings, some students experienced problems with csv files. Therefore, we might ask you to read in RDS files as well. RDS is special R data format.
+For now we will practice to read an RDS file.
+Assignment: read in the file "voetbal.RDS" from the folder sourcedata and call the dataframe "footballRDS" and provide a summary. 
+
+Hint: you have to use the function `readRDS( )`. 
+Between the brackets you have specify the path as we did before in this lecture.
+
+
+
+
+
+
+```{r}
+# Here your code
+
+
+
+```
+
+
+
+
+
 End of Notebook
 
 
